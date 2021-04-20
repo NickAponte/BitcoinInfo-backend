@@ -1,0 +1,42 @@
+const express = require('express');
+const Question = require('../models/Question');
+
+const router = express.Router();
+
+router.get('/', (req, res) => {
+	Question.find({}).then((record) => {
+		res.json(record);
+	});
+});
+
+router.get('/:id', (req, res) => {
+	Question.findById({ _id: req.params.id })
+		.populate('owner', 'userName')
+		.then((record) => {
+			res.json(record);
+		});
+});
+
+
+router.put('/:id', (req, res, next) => {
+	const id = req.params.id;
+	const updatedQuestion = req.body;
+	Question.findByIdAndUpdate(id, updatedQuestion, { new: true}).then((updateQuestion) => {
+		res.json(updateQuestion);
+	})
+})
+
+router.post('/', (req, res) => {
+	Question.create(req.body).then((record) => {
+		res.json(record);
+	});
+});
+
+
+router.delete('/:id', (req, res) => {
+	Question.findByIdAndDelete({ _id: req.params.id }).then((delRecord) => {
+		res.json(delRecord);
+	});
+});
+
+module.exports = router;
