@@ -1,6 +1,5 @@
 const mongoose = require('../db/connection');
 const AnswerSchema = new mongoose.Schema({
-	name: String,
 	answer: String,
 
 	question: {
@@ -8,6 +7,12 @@ const AnswerSchema = new mongoose.Schema({
 		ref: 'Question',
 		required: true,
 	},
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User",
+		required: false,
+	},
+	
 });
 const Answer = mongoose.model('Answer', AnswerSchema);
 module.exports = Answer;
