@@ -13,6 +13,16 @@ const AnswerSchema = new mongoose.Schema({
 		required: false,
 	},
 	
-});
+},
+{
+	timestamps: true,
+	id: false,
+	toJSON: {
+		virtuals: true,
+	},
+}
+
+
+);
 const Answer = mongoose.model('Answer', AnswerSchema);
 module.exports = Answer;

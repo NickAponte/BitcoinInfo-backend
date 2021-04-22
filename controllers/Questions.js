@@ -4,7 +4,7 @@ const Question = require('../models/Question');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	Question.find({}).populate('user').then((record) => {
+	Question.find({}).populate('user','answers').then((record) => {
 		res.json(record);
 	});
 });
