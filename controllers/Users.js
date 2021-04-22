@@ -34,8 +34,8 @@ router.post('/signin', (req, res, next) => {
 		
 		.then((user) => createUserToken(req, user))
 		
-		.then((token) => {
-			 res.json({ token })
+		.then((user) => {
+			 res.json({ user })
 		
 		})
 		.catch(next);

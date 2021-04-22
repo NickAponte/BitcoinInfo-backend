@@ -4,14 +4,14 @@ const Question = require('../models/Question');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	Question.find({}).then((record) => {
+	Question.find({}).populate('user').then((record) => {
 		res.json(record);
 	});
 });
 
 router.get('/:id', (req, res) => {
 	Question.findById({ _id: req.params.id })
-		.populate('owner', 'userName')
+		.populate('user')
 		.then((record) => {
 			res.json(record);
 		});

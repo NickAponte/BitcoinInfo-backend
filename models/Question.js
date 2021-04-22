@@ -6,11 +6,7 @@ const QuestionSchema = new mongoose.Schema({
 		ref: "User",
 		required: true,
 	},
-	// owner: {
-	// 	type: mongoose.Schema.Types.ObjectId,
-	// 	ref: 'User',
-	// 	required: false,
-	// },
+	
 });
 const Question = mongoose.model('Question', QuestionSchema);
 module.exports = Question;

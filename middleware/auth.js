@@ -52,7 +52,9 @@ const createUserToken = (req, user) => {
 		throw err;
 	}
 
-	return jwt.sign({ id: user._id }, secret, { expiresIn: 36000 });
+
+
+	return user;
 };
 
 module.exports = {
