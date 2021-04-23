@@ -31,23 +31,31 @@ router.put('/:id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+	console.log(req.body)
+
 	const answerData = req.body;
 	// get the Question id from the body
 	const questionId = answerData.question;
 	const userId = answerData.user;
+	
+	console.log("1")
 
 	User.findById(userId)
 	.then(user => {
 		answerData.user = user;
 	})
-
+	console.log("2")
 	// find the question by its id
 	Question.findById(questionId)
     .then(question => {
+		console.log("3")
       // add answer to question
       question.answers.push(answerData);
-      // save restaurant
-      return question.save()
+	  console.log("4")
+      // save question
+	  returnRes = question.save();
+	  console.log("5")
+      return returnRes;
     })
 	// send responsne back to client
     .then(question => res.status(201).json({question : question}))
