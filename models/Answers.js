@@ -1,7 +1,7 @@
 const mongoose = require('../db/connection');
 const AnswerSchema = new mongoose.Schema({
 	answer: String,
-
+	userName: String,
 	question: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Question',
@@ -11,8 +11,8 @@ const AnswerSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "User",
 		required: true,
-	},
-	
+
+	}
 },
 {
 	timestamps: true,

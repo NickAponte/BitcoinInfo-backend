@@ -74,7 +74,7 @@ const handleValidationErrors = (err, req, res, next) => {
 
 
 const handleErrors = (err, req, res, next) => {
-	
+	console.log(err)
 	const statusCode = err.statusCode || 500;
 	
 	const message = err.message || 'Internal Server Error';
