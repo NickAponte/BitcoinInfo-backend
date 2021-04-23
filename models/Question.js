@@ -1,4 +1,6 @@
 const mongoose = require('../db/connection');
+const answerSchema = require('./Answers').schema;
+
 const QuestionSchema = new mongoose.Schema(
 	{
 	question: String,
@@ -7,10 +9,15 @@ const QuestionSchema = new mongoose.Schema(
 		ref: "User",
 		required: true,
 	},
+	
+	/*
 	answers: [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Answers'
+		ref: 'Answer'
 	  }]
+	  */
+	  
+	 answers : [answerSchema] 
 	
 },
 {
