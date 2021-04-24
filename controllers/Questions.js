@@ -1,3 +1,4 @@
+const mongoose = require('../db/connection');
 const express = require('express');
 const Question = require('../models/Question');
 

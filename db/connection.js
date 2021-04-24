@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+//var mongoose = require('./mongoconnection');
 mongoose.Promise = Promise;
 const mongoURI = process.env.DB_URL;
 mongoose
