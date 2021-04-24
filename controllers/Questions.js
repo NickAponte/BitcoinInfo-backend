@@ -3,11 +3,12 @@ const Question = require('../models/Question');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
 	Question.find({})
 	.populate('user answers').then((record) => {
 		res.json(record);
-	});
+	})
+	.catch(next);
 	
 });
 
